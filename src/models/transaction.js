@@ -10,13 +10,15 @@ const transSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    timestamp: { timestamp: true },
+
     accountID: {
         type: mongoose.Schema.ObjectId,
         required: true,
         refernce: 'account'
     }
-})
+
+}, { timestamp: true }
+)
 
 const tranModel = mongoose.model('transaction', transSchema)
 module.exports = tranModel

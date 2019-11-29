@@ -1,20 +1,24 @@
 const Account = require("../models/account")
-const Transaction = require('../models/transaction')
 const createNewAccount = account => {
     const newAccount = new Account(account)
     return newAccount.save()
 }
 
 const getAccounts = () => {
-    return Account.find()
+    return Account.find().populate("csutomer")
 }
 
 const getAccountsbyId = id => {
-    return Account.findById(id)
+    return Account.findById(id).populate("customer")
 }
 
-const accUpdateBalbyId = id => {
-    return Account.updateOne(id)
+const accUpdateBalbyId = (id, amount) => {
+    console.log(id)
+    return Account.findByIdAndUpdate(id, {
+        $inc: {
+            balance: amount
+        }
+    })
 }
 // const deleteAcc = id => {
 //     return Account.deleteOne(id)
@@ -25,5 +29,4 @@ module.exports = {
     getAccounts: getAccounts,
     getAccountsbyId: getAccountsbyId,
     accUpdateBalbyId: accUpdateBalbyId
-    //deleteAcc: deleteAcc
 }

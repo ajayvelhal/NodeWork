@@ -13,8 +13,14 @@ const getCustomers = () => {
     return Customer.find()
 }
 
+const delCustomerById = id => {
+    console.log(id)
+    return Customer.remove(id)
+}
+
 module.exports = {
     createNewCustomer: createNewCustomer,
     getCustomerById: getCustomerById,
-    getCustomers: getCustomers
+    getCustomers: getCustomers,
+    delCustomerById: delCustomerById
 }

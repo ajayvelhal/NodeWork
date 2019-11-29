@@ -3,7 +3,8 @@ const route = Router()
 const {
     createNewCustomer,
     getCustomerById,
-    getCustomers
+    getCustomers,
+    delCustomerById
 } = require("./controller")
 
 route.post('/', (request, response) => {
@@ -38,6 +39,16 @@ route.get('/:id', (request, response) => {
             console.log(err)
             response.sendStatus(500)
 
+        })
+})
+
+route.delete('/:id', (request, response) => {
+    delCustomerById({ _id: request.params.id })
+        .then(del => {
+            console.log(del)
+            return response.send(del)
+        }).catch(err => {
+            console.log(err)
         })
 })
 
