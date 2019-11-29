@@ -1,5 +1,5 @@
-const Transaction = require("../models/transaction")
-const { accUpdateBalbyId } = require("../account/controller")
+import Transaction from "../models/transaction"
+import { accUpdateBalbyId } from "../account/controller"
 const createNewTransaction = async transaction => {
     const newTransaction = new Transaction(transaction)
     let createdTransaction = await newTransaction.save()
@@ -25,8 +25,6 @@ const getTransactionbyId = id => {
     })
 }
 
-module.exports = {
-    createNewTransaction: createNewTransaction,
-    getTransaction: getTransaction,
-    getTransactionbyId: getTransactionbyId
-}
+export const createNewTransaction = createNewTransaction
+export const getTransaction = getTransaction
+export const getTransactionbyId = getTransactionbyId

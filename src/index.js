@@ -3,9 +3,7 @@ const express = require('express')
 const parser = require('body-parser')
 const app = express()
 const mongoose = require('mongoose')
-const Customer = require('./models/customer')
-const Account = require('./models/account')
-const Transaction = require('./models/transaction')
+
 
 const customerRouter = require('./customer/routes')
 const accRouter = require('./account/routes')

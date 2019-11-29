@@ -1,4 +1,4 @@
-const Account = require("../models/account")
+import Account from "../models/account"
 const createNewAccount = account => {
     const newAccount = new Account(account)
     return newAccount.save()
@@ -24,9 +24,7 @@ const accUpdateBalbyId = (id, amount) => {
 //     return Account.deleteOne(id)
 // }
 
-module.exports = {
-    createNewAccount: createNewAccount,
-    getAccounts: getAccounts,
-    getAccountsbyId: getAccountsbyId,
-    accUpdateBalbyId: accUpdateBalbyId
-}
+export const createNewAccount = createNewAccount
+export const getAccounts = getAccounts
+export const getAccountsbyId = getAccountsbyId
+export const accUpdateBalbyId = accUpdateBalbyId

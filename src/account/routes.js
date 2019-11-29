@@ -1,12 +1,7 @@
-const { Router } = require("express")
+import { Router } from "express"
 const route = Router()
 
-const {
-    createNewAccount,
-    getAccounts,
-    getAccountsbyId,
-    //deleteAcc
-} = require("./controller")
+import { createNewAccount, getAccounts, getAccountsbyId } from "./controller"
 
 // const {
 //     createNewTransaction, getTransaction
@@ -63,4 +58,4 @@ route.get('/:id', (request, response) => {
 //         })
 // })
 
-module.exports = route
+export default route

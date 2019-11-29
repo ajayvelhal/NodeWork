@@ -1,13 +1,9 @@
-const { Router } = require("express")
+import { Router } from "express"
 const route = Router()
-const Transaction = require('../models/transaction')
-const Account = require("../models/account")
+import Transaction from '../models/transaction'
+import Account from "../models/account"
 
-const {
-    createNewTransaction,
-    getTransaction,
-    getTransactionbyId
-} = require("./controller")
+import { createNewTransaction, getTransaction, getTransactionbyId } from "./controller"
 
 route.post('/', (request, response) => {
     createNewTransaction(request.body)
@@ -38,4 +34,4 @@ route.get('/:id', (request, response) => {
         })
 })
 
-module.exports = route
+export default route

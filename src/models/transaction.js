@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
 
-const transSchema = mongoose.Schema({
+const transSchema = Schema({
     type: {
         type: String,
         required: true,
@@ -12,7 +12,7 @@ const transSchema = mongoose.Schema({
     },
 
     accountID: {
-        type: mongoose.Schema.ObjectId,
+        type: Schema.ObjectId,
         required: true,
         refernce: 'account'
     }
@@ -20,5 +20,5 @@ const transSchema = mongoose.Schema({
 }, { timestamp: true }
 )
 
-const tranModel = mongoose.model('transaction', transSchema)
-module.exports = tranModel
+const tranModel = model('transaction', transSchema)
+export default tranModel
