@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
 
-const accountSchema = mongoose.Schema({
+const accountSchema = Schema({
     type: {
         type: String,
         required: true,
@@ -15,12 +15,12 @@ const accountSchema = mongoose.Schema({
         required: true
     },
     customer: {
-        type: mongoose.Schema.ObjectId,
+        type: Schema.ObjectId,
         required: true,
         reference: 'customer'
     }
 })
 
-const accountModel = mongoose.model('account', accountSchema)
+const accountModel = model('account', accountSchema)
 
-module.exports = accountModel
+export default accountModel

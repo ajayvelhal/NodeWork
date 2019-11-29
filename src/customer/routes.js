@@ -1,11 +1,6 @@
-const { Router } = require('express')
+import { Router } from 'express'
 const route = Router()
-const {
-    createNewCustomer,
-    getCustomerById,
-    getCustomers,
-    delCustomerById
-} = require("./controller")
+import { createNewCustomer, getCustomerById, getCustomers, delCustomerById } from "./controller"
 
 route.post('/', (request, response) => {
     createNewCustomer(request.body)
@@ -52,4 +47,4 @@ route.delete('/:id', (request, response) => {
         })
 })
 
-module.exports = route
+export default route

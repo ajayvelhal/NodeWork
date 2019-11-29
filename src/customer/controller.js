@@ -1,4 +1,4 @@
-const Customer = require("../models/customer")
+import Customer, { findById, find, remove } from "../models/customer"
 
 const createNewCustomer = customer => {
     const newCustomer = new Customer(customer)
@@ -6,21 +6,19 @@ const createNewCustomer = customer => {
 }
 
 const getCustomerById = id => {
-    return Customer.findById(id)
+    return findById(id)
 }
 
 const getCustomers = () => {
-    return Customer.find()
+    return find()
 }
 
 const delCustomerById = id => {
     console.log(id)
-    return Customer.remove(id)
+    return remove(id)
 }
 
-module.exports = {
-    createNewCustomer: createNewCustomer,
-    getCustomerById: getCustomerById,
-    getCustomers: getCustomers,
-    delCustomerById: delCustomerById
-}
+export const createNewCustomer = createNewCustomer
+export const getCustomerById = getCustomerById
+export const getCustomers = getCustomers
+export const delCustomerById = delCustomerById
