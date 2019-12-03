@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose'
 
+import { composeWithMongoose } from "graphql-compose-mongoose"
 const transSchema = Schema({
     type: {
         type: String,
@@ -12,13 +13,16 @@ const transSchema = Schema({
     },
 
     accountID: {
+
         type: Schema.ObjectId,
         required: true,
         refernce: 'account'
     }
+
 
 }, { timestamp: true }
 )
 
 const tranModel = model('transaction', transSchema)
 export default tranModel
+export const TransactionTC = composeWithMongoose(tranModel)
