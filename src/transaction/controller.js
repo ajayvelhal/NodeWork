@@ -1,6 +1,6 @@
 import Transaction from "../models/transaction"
 import { accUpdateBalbyId } from "../account/controller"
-const createNewTransaction = async transaction => {
+export const createNewTransaction = async transaction => {
     const newTransaction = new Transaction(transaction)
     let createdTransaction = await newTransaction.save()
     if (transaction.type == "debit") {
@@ -13,18 +13,15 @@ const createNewTransaction = async transaction => {
     return createdTransaction.populate("account").execPopulate()
 }
 
-const getTransaction = () => {
+export const getTransaction = () => {
     return Transaction.find().populate("account", {
         accountNumber: 1
     })
 }
 
-const getTransactionbyId = id => {
+export const getTransactionbyId = id => {
     return Transaction.findById(id).populate("account", {
         accountID: 1
     })
 }
 
-export const createNewTransaction = createNewTransaction
-export const getTransaction = getTransaction
-export const getTransactionbyId = getTransactionbyId

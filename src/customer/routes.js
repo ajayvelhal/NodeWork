@@ -6,7 +6,7 @@ route.post('/', (request, response) => {
     createNewCustomer(request.body)
         .then(resp => {
             console.log(resp)
-            return response.send(Customer)
+            return response.send(resp)
 
         }).catch(err => {
             console.log(err)

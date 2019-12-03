@@ -1,24 +1,20 @@
 import Customer, { findById, find, remove } from "../models/customer"
 
-const createNewCustomer = customer => {
+export const createNewCustomer = customer => {
     const newCustomer = new Customer(customer)
     return newCustomer.save()
 }
 
-const getCustomerById = id => {
-    return findById(id)
+export const getCustomerById = id => {
+    return Customer.findById(id)
 }
 
-const getCustomers = () => {
-    return find()
+export const getCustomers = () => {
+    return Customer.find()
 }
 
-const delCustomerById = id => {
+export const delCustomerById = id => {
     console.log(id)
-    return remove(id)
+    return Customer.remove(id)
 }
 
-export const createNewCustomer = createNewCustomer
-export const getCustomerById = getCustomerById
-export const getCustomers = getCustomers
-export const delCustomerById = delCustomerById

@@ -1,16 +1,15 @@
-
-const express = require('express')
-const parser = require('body-parser')
+import express from 'express'
+import { json, urlencoded } from 'body-parser'
 const app = express()
-const mongoose = require('mongoose')
+import { connect } from 'mongoose'
 
 
-const customerRouter = require('./customer/routes')
-const accRouter = require('./account/routes')
-const transRouter = require('./transaction/routes')
-app.use(parser.json({}))
+import customerRouter from './customer/routes'
+import accRouter from './account/routes'
+import transRouter from './transaction/routes'
+app.use(json({}))
 app.use(
-    parser.urlencoded({
+    urlencoded({
         extended: false
     })
 )
@@ -19,7 +18,7 @@ app.use("/customer", customerRouter)
 app.use('/account', accRouter)
 app.use('/transaction', transRouter)
 
-mongoose.connect(
+connect(
     "mongodb+srv://root:root@cluster0-pdv2w.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 ).then(res => {
     console.log("Database Connected")

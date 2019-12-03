@@ -1,18 +1,18 @@
 import Account from "../models/account"
-const createNewAccount = account => {
+export const createNewAccount = account => {
     const newAccount = new Account(account)
     return newAccount.save()
 }
 
-const getAccounts = () => {
+export const getAccounts = () => {
     return Account.find().populate("csutomer")
 }
 
-const getAccountsbyId = id => {
+export const getAccountsbyId = id => {
     return Account.findById(id).populate("customer")
 }
 
-const accUpdateBalbyId = (id, amount) => {
+export const accUpdateBalbyId = (id, amount) => {
     console.log(id)
     return Account.findByIdAndUpdate(id, {
         $inc: {
@@ -24,7 +24,3 @@ const accUpdateBalbyId = (id, amount) => {
 //     return Account.deleteOne(id)
 // }
 
-export const createNewAccount = createNewAccount
-export const getAccounts = getAccounts
-export const getAccountsbyId = getAccountsbyId
-export const accUpdateBalbyId = accUpdateBalbyId

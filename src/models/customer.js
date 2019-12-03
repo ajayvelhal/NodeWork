@@ -10,5 +10,6 @@ const customerSchema = Schema({
         required: true
     }
 })
-export const customerModel = model("customer", customerSchema);
+const customerModel = model("customer", customerSchema);
 
+export default customerModel
